@@ -24,5 +24,16 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <argument
+            android:name="num3"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_SecondFragment_to_emptyActivity2"
+            app:destination="@id/emptyActivity" />
     </fragment>
+    <activity
+        android:id="@+id/emptyActivity"
+        android:name="com.example.gitcodelab.EmptyActivity"
+        android:label="activity_empty"
+        tools:layout="@layout/activity_empty" />
 </navigation>
