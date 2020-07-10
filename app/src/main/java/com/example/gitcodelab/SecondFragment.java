@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavHost;
 import androidx.navigation.fragment.NavHostFragment;
 
 
@@ -36,17 +37,15 @@ public class SecondFragment extends Fragment {
     public void count(View view) {
         num2++;
         secondTextView.setText("Suma: "+ num2.toString());
+
+
+
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.navigateEmpty3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_emptyActivity2);
-            }
-        });
+
 
 
         view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
@@ -60,7 +59,8 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.botonSumar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count(view);
+                num2++;
+                secondTextView.setText("Suma: "+ num2.toString());
             }
         });
 
@@ -75,6 +75,27 @@ public class SecondFragment extends Fragment {
                 myToast.show();
             }
         });
+
+//        view.findViewById(R.id.buttonGoTestFragment).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                SecondFragmentDirections.ActionSecondFragmentToTestFragment action = SecondFragmentDirections.actionSecondFragmentToTestFragment();
+//                action.setSumFromBefore(num2);
+//                NavHostFragment.findNavController(SecondFragment.this).navigate(action);
+//            }
+//        });
+
+        view.findViewById(R.id.navigateEmpty3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_emptyActivity2);
+                SecondFragmentDirections.ActionSecondFragmentToEmptyActivity2 action = SecondFragmentDirections.actionSecondFragmentToEmptyActivity2();
+                action.setParametro1("Hola, la suma es: " + num2);
+                action.setNombre("Andrea");
+                NavHostFragment.findNavController(SecondFragment.this).navigate(action);
+            }
+        });
+
 
 
     }

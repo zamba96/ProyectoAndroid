@@ -35,5 +35,13 @@
         android:id="@+id/emptyActivity"
         android:name="com.example.gitcodelab.EmptyActivity"
         android:label="activity_empty"
-        tools:layout="@layout/activity_empty" />
+        tools:layout="@layout/activity_empty" >
+        <argument
+            android:name="parametro1"
+            app:argType="string"
+            android:defaultValue="defecto" />
+        <argument
+            android:name="nombre"
+            android:defaultValue="Juan" />
+    </activity>
 </navigation>

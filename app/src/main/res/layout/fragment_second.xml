@@ -34,9 +34,10 @@
         android:text="Say Hi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_second"
-        app:layout_constraintVertical_bias="0.352" />
+        app:layout_constraintVertical_bias="0.173" />
 
     <Button
         android:id="@+id/botonSumar"
@@ -52,10 +53,22 @@
         android:id="@+id/navigateEmpty3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ir a actividad vacia"
+        android:text="Ir al menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintVertical_bias="0.505" />
+
+    <Button
+        android:id="@+id/buttonGoTestFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ir a TestFragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/navigateEmpty3"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
