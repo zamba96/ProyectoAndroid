@@ -2,6 +2,7 @@ package com.example.gitcodelab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,7 +50,21 @@ public class EmptyActivity extends AppCompatActivity implements AdapterView.OnIt
         //Seleccionar esto como el listener
         spinnerPostres.setOnItemSelectedListener(this);
 
+        findViewById(R.id.buttonNext).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SegundaActivity.class);
+                intent.putExtra("valor1", textoBebidas.getText());
+                intent.putExtra("suma", 10);
+                startActivity(intent);
+            }
+        });
+
+
     }
+
+
 
     public void manejarSpinner1(int pos, long id) {
         Log.w("Empty Activity Tag", "pos: " + pos);
