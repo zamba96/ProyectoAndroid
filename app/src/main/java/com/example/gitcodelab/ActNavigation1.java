@@ -2,10 +2,13 @@ package com.example.gitcodelab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -15,6 +18,24 @@ public class ActNavigation1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_navigation1);
+
+        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+        String nombre = prefs.getString("NombrePaciente", "Vacio");
+        TextView text = findViewById(R.id.textView4);
+        text.setText(nombre);
+
+
+        findViewById(R.id.buttonGuardar).setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                EditText editTextParam = findViewById(R.id.et_param);
+                editor.putString("NombrePaciente", editTextParam.getText().toString());
+                editor.apply();
+            }
+        });
+
 
         findViewById(R.id.buttonIrAAct2).setOnClickListener(
                 new View.OnClickListener() {
@@ -36,5 +57,7 @@ public class ActNavigation1 extends AppCompatActivity {
                     }
                 }
         );
+
+
     }
 }

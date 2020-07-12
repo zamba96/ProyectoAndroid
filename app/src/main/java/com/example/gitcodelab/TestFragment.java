@@ -28,6 +28,10 @@ public class TestFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private int num;
+    private String name;
+
+
     public TestFragment() {
         // Required empty public constructor
     }
@@ -69,11 +73,13 @@ public class TestFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //Traer los parametros del cambio de vista
-//        Integer count = TestFragmentArgs.fromBundle(getArguments()).getSumFromBefore();
-//        String text = "Parametro: " + count.toString();
-//        //Poner el texto de la vista como el parametro que entra
-//        TextView tw = view.findViewById(R.id.twParam);
-//        tw.setText(text);
+        //Referencia al textView que vamos a cambiar con los parametros
+        TextView texto = view.findViewById(R.id.tvParametro1);
+        //Traemos el parametro nombre usando getNombre() sobre TestFragmentArgs.fromBundle()
+        String nombre = TestFragmentArgs.fromBundle(getArguments()).getNombre();
+        //Traemos el parametro numero de la misma forma.
+        int numero = TestFragmentArgs.fromBundle(getArguments()).getNumero();
+        //Cambiamos el texto del textView con los parametros que llegaron.
+        texto.setText(nombre + ":" + numero);
     }
 }

@@ -28,7 +28,7 @@ public class SecondFragment extends Fragment {
         View secondLayout = inflater.inflate(R.layout.fragment_second, container, false);
 
         secondTextView = secondLayout.findViewById(R.id.textview_second);
-        num2 = 0;
+        num2 = SecondFragmentArgs.fromBundle(getArguments()).getEdad();
         secondTextView.setText(num2.toString());
 
         return secondLayout;
@@ -76,19 +76,23 @@ public class SecondFragment extends Fragment {
             }
         });
 
-//        view.findViewById(R.id.buttonGoTestFragment).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                SecondFragmentDirections.ActionSecondFragmentToTestFragment action = SecondFragmentDirections.actionSecondFragmentToTestFragment();
-//                action.setSumFromBefore(num2);
-//                NavHostFragment.findNavController(SecondFragment.this).navigate(action);
-//            }
-//        });
+        view.findViewById(R.id.buttonGoTestFragment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Crear la accion de navegacion desde SecondFragment hasta TestFragment, pasando por parametro el nombre, ya que nombre no tiene un default value
+                SecondFragmentDirections.ActionSecondFragmentToTestFragment action = SecondFragmentDirections.actionSecondFragmentToTestFragment("Juan");
+                //Agregan el parametro "numero", el cual, como si tiene un default value, es opcional y no "TIENEN" que
+                // pasarlo, pero si no lo pasan, a la otra pantalla le llega el default value
+                action.setNumero(num2);
+                //Aca realizan la navegacion con la accion que crearon antes.
+                NavHostFragment.findNavController(SecondFragment.this).navigate(action);
+            }
+        });
 
         view.findViewById(R.id.navigateEmpty3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_emptyActivity2);
+//
                 SecondFragmentDirections.ActionSecondFragmentToEmptyActivity2 action = SecondFragmentDirections.actionSecondFragmentToEmptyActivity2();
                 action.setParametro1("Hola, la suma es: " + num2);
                 action.setNombre("Andrea");

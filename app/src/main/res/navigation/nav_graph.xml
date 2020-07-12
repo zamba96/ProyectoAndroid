@@ -24,12 +24,20 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
-        <argument
-            android:name="num3"
-            app:argType="integer" />
         <action
             android:id="@+id/action_SecondFragment_to_emptyActivity2"
             app:destination="@id/emptyActivity" />
+        <argument
+            android:name="numero"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="edad"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_SecondFragment_to_testFragment"
+            app:destination="@id/testFragment" />
     </fragment>
     <activity
         android:id="@+id/emptyActivity"
@@ -44,4 +52,17 @@
             android:name="nombre"
             android:defaultValue="Juan" />
     </activity>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.example.gitcodelab.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" >
+        <argument
+            android:name="numero"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="Nombre"
+            app:argType="string" />
+    </fragment>
 </navigation>
